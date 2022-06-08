@@ -23,8 +23,25 @@ describe("My Token Contract Tests", function () {
     aliceAddress = await alice.getAddress();
 
     TokenContract = await ethers.getContractFactory("MyToken");
-    TokenInstance = await TokenContract.connect(owner).deploy();
-    
+    TokenInstance = await TokenContract.connect(owner).deploy(
+      50,
+      "My Token",
+      "MTN"
+    );
+  })
+
+  describe("Initialization tests", function()  {
+    it.only("initializes properly", async () =>{
+      expect(await TokenInstance.name()).to.be.equal("My Token");
+      expect(await TokenInstance.symbol()).to.be.equal("MTN");
+      // expect(await TokenInstance.totalSupply()).to.be.equal(50)
+    })
+  })
+
+  describe("_transfer function tests", function()  {
+    it("", async () =>{
+      
+    })
   })
 
   

@@ -3,9 +3,13 @@ const fs = require('fs');
 
 async function main() {
   const TokenContract = await hre.ethers.getContractFactory("MyToken");
-  const tokencontract = await TokenContract.deploy();
-  await tokencontract.deployed();
-  console.log("My Token deployed to:", tokencontract.address);
+  const tokenContract = await TokenContract.deploy(
+    50,
+    "My Token",
+    "MTN"
+  );
+  await tokenContract.deployed();
+  console.log("My Token deployed to:", tokenContract.address);
 }
 
 main()
