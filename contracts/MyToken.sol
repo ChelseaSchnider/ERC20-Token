@@ -90,9 +90,9 @@ contract MyToken {
 
     function burnFrom(address _from, uint256 _value) public returns (bool success) {
 
-        require(balanceOf[_from] >= _value); 
+        require(balanceOf[_from] >= _value, "Insufficient funds to send"); 
 
-        require(_value <= allowance[_from][msg.sender]); 
+        require(_value <= allowance[_from][msg.sender], "Transfer amount exceeds allowance"); 
 
         balanceOf[_from] -= _value; 
 
